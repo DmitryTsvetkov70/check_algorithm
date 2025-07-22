@@ -32,24 +32,36 @@ body {
     text-align: left;
     color: #388e3c;
 }
+
 #chat-form {
-    display: flex;
+    flex: 1;
+    position: relative; /* Для правильного позиционирования коммит 3*/
 }
+
 #user-input {
     flex: 1;
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
+    border-radius: 4px;
     outline: none;
+    min-height: 40px;
+    max-height: 400px;
+    resize: none;
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
 }
+
 #chat-form button {
     padding: 8px 16px;
     border: none;
     background: #1976d2;
     color: #fff;
-    border-radius: 0 4px 4px 0;
+    border-radius: 4px;
     cursor: pointer;
+    margin-left: 10px; /* Отступ от textarea */
 }
+
 #chat-form button:hover {
     background: #1565c0;
 }
@@ -67,4 +79,11 @@ body {
     overflow-y: auto; /* добавляем прокрутку при переполнении */
     width: 100%;
     box-sizing: border-box;
+}
+/* коммит 3*/
+.chat-input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
 }
