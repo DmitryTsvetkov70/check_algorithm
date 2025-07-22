@@ -13,12 +13,14 @@
                 <div class="message user"><strong>Вы:</strong> {{ entry.user_message }}</div>
                 <div class="message llm"><strong>AI:</strong> {{ entry.llm_reply }}</div>
             {% endfor %}
+        </div>
         <div class="chat-input-wrapper"> <!-- Новая обёртка коммит 3-->
             <form id="chat-form" autocomplete="off">
                 <textarea id="user-input" placeholder="Type your message..." required></textarea>
-            </form>
+            </form><br/>
             <button type="submit">Отправить</button>
         </div>
+    </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
