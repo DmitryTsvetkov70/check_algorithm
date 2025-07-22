@@ -42,7 +42,7 @@ body {
     flex: 1;
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    order-radius: 4px 4px 0 0;
     outline: none;
     min-height: 40px;
     max-height: 400px;
@@ -86,4 +86,26 @@ body {
     align-items: center;
     justify-content: space-between;
     margin-top: 10px;
+}
+
+.chat-input-wrapper button {
+    padding: 8px 16px;
+    border: none;
+    background: #1976d2;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    
+    /* Дополнительные стили для кнопки */
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+.chat-input-wrapper button:hover {
+    background: #1565c0;
+}
+
+.chat-input-wrapper button:active {
+    background: #115599;
 }
