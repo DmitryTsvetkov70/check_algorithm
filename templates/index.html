@@ -14,10 +14,11 @@
                 <div class="message llm"><strong>AI:</strong> {{ entry.llm_reply }}</div>
             {% endfor %}
         </div>
-        <form id="chat-form" autocomplete="off">
-            <input type="text" id="user-input" placeholder="Type your message..." required>
-            <button type="submit">Отправить</button>
-        </form>
+            <!-- В форме меняем input на textarea Commmit 2 -->
+            <form id="chat-form" autocomplete="off">
+                <textarea id="user-input" placeholder="Type your message..." required></textarea>
+                <button type="submit">Отправить</button>
+            </form>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

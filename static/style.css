@@ -53,3 +53,18 @@ body {
 #chat-form button:hover {
     background: #1565c0;
 }
+
+/* Добавляем стили для textarea Commmit 2 */
+#user-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    min-height: 40px; /* начальная высота */
+    max-height: 400px; /* максимальная высота (20 строк примерно) */
+    resize: none; /* запрещаем ручное изменение размера */
+    overflow-y: auto; /* добавляем прокрутку при переполнении */
+    width: 100%;
+    box-sizing: border-box;
+}

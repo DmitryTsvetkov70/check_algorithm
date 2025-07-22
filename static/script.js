@@ -22,3 +22,20 @@ document.getElementById('chat-form').addEventListener('submit', async function(e
     chatBox.innerHTML += `<div class="message llm"><strong>ИИ:</strong> ${data.reply}</div>`;
     chatBox.scrollTop = chatBox.scrollHeight;
 });
+
+// В файле script.js добавляем следующий код Commmit 2
+document.addEventListener('DOMContentLoaded', () => {
+    const textarea = document.getElementById('user-input');
+    
+    // Функция для автоматического изменения высоты
+    function autoResize() {
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 8 + 'px';
+    }
+    
+    // Привязываем обработчик события
+    textarea.addEventListener('input', autoResize);
+    
+    // Инициализируем начальное состояние
+    autoResize();
+});
