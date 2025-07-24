@@ -109,3 +109,17 @@ body {
 .chat-input-wrapper button:active {
     background: #115599;
 }
+
+/* Добавим CSS стили для кнопки копирования:*/
+.copy-btn {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.copy-btn:hover {
+    color: #1976d2;
+}

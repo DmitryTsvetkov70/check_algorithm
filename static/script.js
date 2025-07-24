@@ -39,3 +39,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // Инициализируем начальное состояние
     autoResize();
 });
+
+// Добавим JavaScript для реализации копирования:
+document.addEventListener('DOMContentLoaded', () => {
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    
+    copyButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const text = button.dataset.text;
+            
+            // Создаем временный input
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            
+            // Выделяем и копируем текст
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            // Показываем уведомление об успешной копии
+            button.textContent = '✅';
+            setTimeout(() => {
+                button.textContent = '📋';
+            }, 1000);
+        });
+    });
+});

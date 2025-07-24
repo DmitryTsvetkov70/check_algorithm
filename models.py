@@ -45,7 +45,7 @@ class LLMService:
                     {"role": "user", "content": message},
                 ],
                 temperature=1.0,
-                max_tokens=1024,
+                #max_tokens=1024,
             )
 
             # Возвращаем ответ

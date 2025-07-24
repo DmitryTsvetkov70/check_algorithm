@@ -10,9 +10,16 @@
     <div class="chat-container">
         <div id="chat-box" class="chat-box">
             {% for entry in chat_history %}
-                <div class="message user"><strong>Вы:</strong> {{ entry.user_message }}</div>
-                <div class="message llm"><strong>AI:</strong> {{ entry.llm_reply }}</div>
+                <div class="message user">
+                    <strong>Вы:</strong> {{ entry.user_message }}
+                    <button class="copy-btn" data-text="{{ entry.user_message }}">📋</button>
+                </div>
+                <div class="message llm">
+                    <strong>AI:</strong> {{ entry.llm_reply }}
+                    <button class="copy-btn" data-text="{{ entry.llm_reply }}">📋</button>
+                </div>
             {% endfor %}
+
         </div>
         <div class="chat-input-wrapper"> <!-- Новая обёртка коммит 3-->
             <form id="chat-form" autocomplete="off">
