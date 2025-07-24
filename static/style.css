@@ -41,8 +41,6 @@ body {
 #user-input {
     flex: 1;
     padding: 8px;
-    border: 1px solid #ccc;
-    order-radius: 4px 4px 0 0;
     outline: none;
     min-height: 40px;
     max-height: 400px;
@@ -133,7 +131,7 @@ body {
     border-radius: 4px;
     cursor: pointer;
     margin-left: 10px;
-    transition: 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 #submit-btn:disabled {
