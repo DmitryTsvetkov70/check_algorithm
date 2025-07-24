@@ -1,26 +1,50 @@
 document.getElementById('chat-form').addEventListener('submit', async function(e) {
     e.preventDefault();
+
+    // Получаем элементы
+     const submitBtn = document.getElementById('submit-btn');
     const input = document.getElementById('user-input');
     const chatBox = document.getElementById('chat-box');
     const userMessage = input.value.trim();
+
+
     if (!userMessage) return;
 
-    // Display user message
+    // Блокируем кнопку и меняем текст
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Думаю...';
+
+    // Отображаем сообщение пользователя
     chatBox.innerHTML += `<div class="message user"><strong>Вы:</strong> ${userMessage}</div>`;
     chatBox.scrollTop = chatBox.scrollHeight;
     input.value = '';
 
-    // Send to backend (adjust endpoint as needed)
-    const response = await fetch('/chat', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({message: userMessage})
-    });
-    const data = await response.json();
 
-    // Display LLM response
-    chatBox.innerHTML += `<div class="message llm"><strong>ИИ:</strong> ${data.reply}</div>`;
-    chatBox.scrollTop = chatBox.scrollHeight;
+
+    try {    
+        // Отправляем запрос
+        const response = await fetch('/chat', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({message: userMessage})
+        });
+        const data = await response.json();
+
+        /// Отображаем ответ
+        chatBox.innerHTML += `<div class="message llm"><strong>ИИ:</strong> ${data.reply}</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+    } catch (error) {
+        //Передаем сообщение об ошибке в консоль
+        console.error('Ошибка:', error);
+        // Возвращаем кнопку в исходное состояние
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Отправить';        
+    } finally {
+        // Возвращаем кнопку в исходное состояние
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Отправить';
+    }
+
 });
 
 // В файле script.js добавляем следующий код Commmit 2

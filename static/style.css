@@ -123,3 +123,21 @@ body {
 .copy-btn:hover {
     color: #1976d2;
 }
+
+/* Добавляем стили для кнопки в состоянии загрузки */
+#submit-btn {
+    padding: 8px 16px;
+    border: none;
+    background: #1976d2;
+    color: #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: 0.3s ease;
+}
+
+#submit-btn:disabled {
+    background: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
