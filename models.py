@@ -29,8 +29,9 @@ class LLMService:
             # Формируем системный промпт
             self.sys_prompt = sys_prompt
             # Указываем путь к модели, 
-            # Здесь нужно будет указать идентификатор своего аккаунта 
-            self.model = f"gpt://{env["YA_ACC_KEY"]}/yandexgpt-lite"
+            # Здесь нужно будет указать идентификатор своего аккаунта
+            acc_key=env["YA_ACC_KEY"]
+            self.model = f"gpt://{acc_key}/yandexgpt-lite"
 
         except Exception as e:
             return f"Произошла ошибка: {str(e)}"
