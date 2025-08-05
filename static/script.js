@@ -1,3 +1,12 @@
+// Функция для экранирования и замены переносов строк
+function escapeAndNl2br(text) {
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\n/g, "<br>");
+}
+
 document.getElementById('chat-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -15,7 +24,7 @@ document.getElementById('chat-form').addEventListener('submit', async function(e
     submitBtn.textContent = 'Думаю...';
 
     // Отображаем сообщение пользователя
-    chatBox.innerHTML += `<div class="message user"><strong>Вы:</strong> ${userMessage}</div>`;
+    chatBox.innerHTML += `<div class="message user"><strong>Вы:</strong> ${escapeAndNl2br(userMessage)}</div>`;
     chatBox.scrollTop = chatBox.scrollHeight;
     input.value = '';
 
@@ -31,8 +40,22 @@ document.getElementById('chat-form').addEventListener('submit', async function(e
         const data = await response.json();
 
         /// Отображаем ответ
-        chatBox.innerHTML += `<div class="message llm"><strong>ИИ:</strong> ${data.reply}</div>`;
-        chatBox.scrollTop = chatBox.scrollHeight;
+        // Функция экранирует спец. символы в строке
+        function escapeHTML(str) {
+            if (!str) return "";
+            return str
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#39;");
+        }
+
+
+        // Экранируй ответ, выводи в pre (для структурированного кода)
+        const escapedAIReply = `<pre>${escapeHTML(data.reply)}</pre>`;
+        chatBox.innerHTML += `<div class="message llm"><strong>ИИ:</strong> ${escapedAIReply}</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight
     } catch (error) {
         //Передаем сообщение об ошибке в консоль
         console.error('Ошибка:', error);

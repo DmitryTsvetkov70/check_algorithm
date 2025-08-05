@@ -25,7 +25,7 @@ body {
     margin: 8px 0;
 }
 .user {
-    text-align: right;
+    text-align: left;
     color: #1976d2;
 }
 .llm {

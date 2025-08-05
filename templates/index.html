@@ -11,11 +11,12 @@
         <div id="chat-box" class="chat-box">
             {% for entry in chat_history %}
                 <div class="message user">
-                    <strong>Вы:</strong> {{ entry.user_message }}
+                    <strong>Вы:</strong> {{ entry.user_message | replace('\n', '<br>') | safe }}
                     <button class="copy-btn" data-text="{{ entry.user_message }}">📋</button>
                 </div>
                 <div class="message llm">
-                    <strong>AI:</strong> {{ entry.llm_reply }}
+                    <strong>AI:</strong>
+                    <pre>{{ entry.llm_reply | e }}</pre>
                     <button class="copy-btn" data-text="{{ entry.llm_reply }}">📋</button>
                 </div>
             {% endfor %}
