@@ -31,7 +31,7 @@ class LLMService:
             # Указываем путь к модели, 
             # Здесь нужно будет указать идентификатор своего аккаунта
             acc_key=env["YA_ACC_KEY"]
-            self.model = f"gpt://{acc_key}/yandexgpt-lite"
+            self.model = f"gpt://{acc_key}/yandexgpt"
 
         except Exception as e:
             return f"Произошла ошибка: {str(e)}"
