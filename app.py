@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from models import LLMService, db, ChatHistory, dummy_llm_service
+from models import LLMService, db, ChatHistory
 from promts import sys_promt_gen_diarams
 
 app = Flask(__name__)
