@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from models import LLMService, db, ChatHistory, dummy_llm_service
-from promts import sys_promt_stp, sys_promt_gen_diarams
+from promts import sys_promt_gen_diarams
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
