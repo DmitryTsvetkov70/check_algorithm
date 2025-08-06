@@ -9,10 +9,10 @@
 - `app.py` — основной файл приложения Flask
 - `models.py` — модели базы данных и сервис LLM
 - `templates/` — HTML-шаблоны (например, `index.html`)
-- `static/` — статические файлы (CSS, JS, изображения)
+- `static/` — статические файлы (CSS, JS)
     - `style.css`
     - `script.js`
-    - `logo.png`
+
 
 ## Установка
 
