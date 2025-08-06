@@ -12,12 +12,12 @@
             {% for entry in chat_history %}
                 <div class="message user">
                     <strong>Вы:</strong> {{ entry.user_message | replace('\n', '<br>') | safe }}
-                    <button class="copy-btn" data-text="{{ entry.user_message }}">📋</button>
+                    <button class="copy-btn" data-text="{{ entry.user_message|e }}">📋</button>
                 </div>
                 <div class="message llm">
-                    <strong>AI:</strong>
+                    <strong>ИИ:</strong>
                     <pre>{{ entry.llm_reply | e }}</pre>
-                    <button class="copy-btn" data-text="{{ entry.llm_reply }}">📋</button>
+                    <button class="copy-btn" data-text="{{ entry.llm_reply|e }}">📋</button>
                 </div>
             {% endfor %}
 
