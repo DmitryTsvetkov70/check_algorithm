@@ -14,9 +14,6 @@ class ChatHistory(db.Model):
     timestamp = db.Column(db.DateTime, server_default=db.func.now())
 
 
-def dummy_llm_service(user_message):
-    return f"Вы сказали: {user_message}, но я пока не могу ответить на это."
-
 
 class LLMService:
     def __init__(self, sys_prompt):
