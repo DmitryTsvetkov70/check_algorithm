@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from models import LLMService, db, ChatHistory
 from promts import sys_promt_gen_diarams
+from config import model_name, temperature, max_tokens
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
@@ -8,7 +9,7 @@ db.init_app(app)
 
 # задаем системный промт
 sys_promt = sys_promt_gen_diarams
-app.config["LLM_SERVICE"] = LLMService(sys_promt)
+app.config["LLM_SERVICE"] = LLMService(model_name)
 
 
 @app.route("/")
@@ -23,7 +24,7 @@ def chat():
     user_message = data.get("message", "")
     # Dummy LLM response for demonstration
     # llm_reply = dummy_llm_service(user_message)
-    llm_reply = app.config["LLM_SERVICE"].chat(user_message)
+    llm_reply = app.config["LLM_SERVICE"].chat(user_message, sys_promt, temperature, max_tokens)
     # Save to chat history
     new_entry = ChatHistory(user_message=user_message, llm_reply=llm_reply)
     db.session.add(new_entry)

@@ -16,7 +16,7 @@ class ChatHistory(db.Model):
 
 
 class LLMService:
-    def __init__(self, sys_prompt):
+    def __init__(self, model_name):
         try:
             # Создаем клиент с вашим токеном
             self.client = openai.OpenAI(
@@ -24,26 +24,25 @@ class LLMService:
                 base_url="https://llm.api.cloud.yandex.net/v1",
             )
             # Формируем системный промпт
-            self.sys_prompt = sys_prompt
             # Указываем путь к модели, 
             # Здесь нужно будет указать идентификатор своего аккаунта
             acc_key=env["YA_ACC_KEY"]
-            self.model = f"gpt://{acc_key}/yandexgpt"
+            self.model = f"gpt://{acc_key}/{model_name}"
 
         except Exception as e:
             return f"Произошла ошибка: {str(e)}"
 
-    def chat(self, message):
+    def chat(self, message, sys_promt, temperature, max_tokens):
         try:
             # Обращаемся к API
             response = self.client.chat.completions.create(
                 model = self.model,
                 messages=[
-                    {"role": "system", "content": self.sys_prompt},
+                    {"role": "system", "content": sys_promt},
                     {"role": "user", "content": message},
                 ],
-                temperature=1.0,
-                max_tokens=20480,
+                temperature=temperature,
+                max_tokens=max_tokens
             )
 
             # Возвращаем ответ
